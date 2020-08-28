@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bubble chart</title>
+<script type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+<script src="bubbleChart.js"></script>
+</head>
+<body>
+<div id="chart"></div>
+<script>
+	var width=800,
+  		height=900,
+  		min=5,
+  		max=90,
+      columnaRadio="times";
+
+function numeroDeMuertes(d) {
+    muertes=0;
+    for(i=1; i<=5; i++){
+        if(d["Death" + i] == "YES"){
+            muertes++;
+        } else{
+            return muertes;
+        }
+    }
+    return muertes;
+}
+
+function numeroDeRetornos(d) {
+    retornos=0;
+    for(i=1; i<=5; i++){
+        if(d["Return" + i] == "YES"){
+            retornos++;
+        } else{
+            return retornos
+        }
+    }
+    return retornos;
+}
+
+    d3.csv('avengers.csv', function(d){
+    	return {
+        url : d.URL,
+        name : d.Name,
+        times : +d.Appearances,
+      	gender : d.Gender,
+      	year : +d.Year,
+      	yearsIn : +d.YearsIn,
+      	honorary : d.Honorary,
+        death :  numeroDeMuertes(d),
+      	return: numeroDeRetornos(d),
+      	current: d.Current,
+        r : 0
+      	};
+    },function(error, data) {
+    	if (error) {
+          	console.error('Error leyendo o analizando los datos');
+          	throw error;
+      	}
+      //Cambio del radio dependiendo de que columna se utilice como valor del radio
+      var radioAEscala = d3.scaleLinear()
+        .domain([d3.min(data, function(d) { return d[columnaRadio]; }), d3.max(data,function(d) { return d[columnaRadio]; })])
+        .range([min, max]);
+      data.forEach(function(d) {
+        d.r=radioAEscala(d.times);
+      });
+      
+      var chart = bubbleChart().width(width).height(height);
+      d3.select('#chart').datum(data).call(chart);
+    });
+
+</script>
+</body>
+</html>

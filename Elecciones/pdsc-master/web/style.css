@@ -1,0 +1,705 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19-nov-2019, 20:39:26
+    Author     : andres
+*/
+
+/* MAIN DIVS AND BOXES */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 99vh;
+}
+
+main{
+    flex: 1 0 auto;
+    transition: margin-left .2s;
+    padding: 16px;
+    margin-left: 20rem;
+}
+
+#last-box {
+    display: inline-block;
+    float: right;
+}
+
+#last-submit {
+    box-shadow: inset 0px 1px 0px 0px #3dc21b;
+    background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+    background-color: #44c767;
+    border-radius: 6px;
+    border: 1px solid #18ab29;
+    display: hide;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 33px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+}
+
+#last-submit:hover {
+    background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+}
+
+#last-submit:active {
+    background: linear-gradient(to bottom, #7cc158 5%, #65cd81 100%);
+}
+
+#last-submit:disabled {
+    background: lightgrey;
+    background-color: lightgrey;
+    border: lightgrey;
+    box-shadow: inset 0px 1px 0px 0px lightgrey;
+    pointer-events: none;
+}
+
+.main-box{
+    margin-left: 150px;
+    position: relative;
+    margin-right: 0;
+    display: inline-block;
+}
+
+#table-box{
+    width: 450px;
+    height: auto;
+}
+
+#table {
+    border-collapse: collapse;
+}
+
+#table, th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+td:empty {
+    visibility: hidden;
+    border: 0px;
+}
+
+#downloadTable {
+    border: 0px;
+}
+
+#downloadTable button {
+	box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:linear-gradient(to bottom, #79bbff 5%, #7ca9d6 100%);
+	background-color:#79bbff;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+}
+
+#downloadTable button:hover {
+	background:linear-gradient(to bottom, #7ca9d6 5%, #79bbff 100%);
+	background-color:#7ca9d6;
+}
+
+#downloadTable button:active {
+	position:relative;
+	top:1px;
+}
+
+#chart-box{
+    width: 450px;
+    height: 450px;
+}
+
+#chart{
+    margin: 25px;
+}
+
+
+
+header {
+  flex-shrink: 0;
+  height: 3rem;
+  background-color: #037cf5;
+  line-height: 3rem;
+  text-align: center;
+  color: #fff;
+}
+
+footer{
+    height: 1.5rem;
+    line-height: 1.4rem;
+    flex-shrink: 0;
+    background-color: #f2f2f2;
+    text-align: center;
+    transition: margin-left .2s;
+    margin-bottom: 0;
+    margin-left: 20rem;
+}
+
+button{
+    outline: none;
+}
+
+/* INPUT BOX */
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgb(0,0,0,0.4);
+    z-index: 10;
+}
+
+.modal-content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 20rem;
+    width: 30rem;
+    overflow: auto;
+    margin: auto;
+    padding: 1.5rem;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    border-radius: 2rem;
+}
+
+.modal-close {
+    color: #AAAAAA;
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.modal-close:hover, .modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-input-full {
+    width: 80%;
+}
+
+.form-input-double {
+    width: 80%;
+}
+
+.form-input-double-first {
+    display: inline-block;
+    width: 40%;
+}
+
+.form-input-double-second {
+    display: inline-block;
+    margin-left: 15%;
+    width: 40%;
+    
+}
+
+.label-input{
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.text-input {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 3rem;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #e8e8e8;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.text-input:invalid {
+    outline-color: #F25B4E;
+}
+
+.modal-form-submit {
+    box-shadow: inset 0px 1px 0px 0px #3dc21b;
+    background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+    background-color: #44c767;
+    border-radius: 6px;
+    border: 1px solid #18ab29;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 33px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
+
+.modal-form-submit:hover {
+    background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+    background-color: #5cbf2a;
+}
+
+.modal-form-submit:active {
+    position: absolute;
+    bottom: 4.5%;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    height: 100%;
+    width: 20rem;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: #BFE6E9;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    text-decoration: none;
+    text-align: center;
+    font-size: 36px;
+    color: #818181;
+    transition: 0.3s;
+    display: block;
+    padding: 8px 8px 8px 8px;
+    margin-left: auto;
+    right: 0;
+    width: 20%;
+}
+
+.parambtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: PINK;
+    color: white;
+    padding: 10px 15px;
+    border: 1px solid #98BFC1;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.parambtn:hover {
+    transition: 0.3s;
+    background-color: LIGHTPINK;
+}
+
+/* SIDEBAR PARAMETERS */
+
+.sidebar .dropdown {
+    opacity: 1;
+    margin-left: 2rem;
+}
+
+.sidebar .sidebarElement {
+    display: none;
+    margin-left: 3rem;
+    margin-top: 2rem;
+    transition: opacity ease-in-out;
+}
+
+#threshold-input {
+    width: 12rem;
+    height: 2rem;
+    margin-top: 0.5rem;
+    font-size: 12pt;
+    text-align: right;
+    border-radius: 0.2rem;
+    border-style: initial;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+    
+}
+
+#date-box input {
+    width: 3rem;
+    height: 2rem;
+    margin-top: 0.5rem;
+    font-size: 12pt;
+    text-align: center;
+    border-radius: 0.2rem;
+    border-style: initial;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    box-sizing: border-box;
+}
+
+#month-input {
+    margin-left: 1.5rem;
+}
+
+#representatives-box input {
+    width: 12rem;
+    height: 2rem;
+    margin-top: 0.5rem;
+    font-size: 12pt;
+    text-align: center;
+    border-radius: 0.2rem;
+    border-style: initial;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    box-sizing: border-box;
+    pointer-events: none;
+    
+}
+
+.configuration-input:invalid {
+    outline-color: #FF4848;
+}
+
+.sidebar #districts-box {
+    margin-left: 0;
+}
+
+.sidebar #submit-box {
+    margin-left: 0;
+    padding-bottom: 20px;
+}
+
+#election-submit {
+    box-shadow: inset 0px 1px 0px 0px #3dc21b;
+    background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+    background-color: #44c767;
+    border-radius: 6px;
+    border: 1px solid #18ab29;
+    margin-bottom: 20px;
+    display: hide;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 33px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
+    position: absolute;
+    left: 50%;
+}
+
+#election-submit:hover {
+    background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+}
+
+#election-submit:active {
+    background: linear-gradient(to bottom, #7cc158 5%, #65cd81 100%);
+}
+
+/* COLLAPSIBLE */
+.collapsible{
+    background-color: PINK;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+}
+
+.collapsible.active, .collapsible:hover {
+  background-color: GREY;
+}
+
+.collapsible:after {
+  content: '\2303';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.collapsible.active:after {
+  content: "\2304";
+}
+
+.collapsible-content {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-in-out;
+  background-color: #F1F1F1;
+}
+
+/* COLLAPSIBLE SPECIFIC BOXES */
+
+#everydistrict{
+    background-color: PINK;
+}
+
+#everydistrict.active, #everydistrict:hover{
+    background-color: LIGHTPINK;
+}
+
+#singledistrict{
+    border-radius: 0.5rem;
+    background-color: PALEVIOLETRED;
+}
+
+#singledistrict.active, #singledistrict:hover{
+    background-color: MEDIUMVIOLETRED;
+}
+
+#singlecandidature {
+    border-radius: 0.5rem;
+    background-color: MEDIUMTURQUOISE;
+}
+
+#singlecandidature.active, #singlecandidature:hover{
+    background-color: DARKTURQUOISE;
+}
+
+.district{
+    margin-top: 0.2em;
+}
+
+.district .collapsible-content {
+    border-radius: 0.5rem;
+    background-color: #CBCBCB;
+}
+
+.candidature {
+    margin-top: 0.2rem;
+}
+
+.candidature .collapsible-content {
+    border-radius: 0.5rem;
+    background-color: #B7EBDA;
+}
+
+/* COLLAPSIBLE-CONTENT ELEMENTS */
+
+.collapsible-value {
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible-value p {
+    display: inline-block;
+}
+
+.collapsible-value input {
+    display: inline-block;
+    width: 5rem;
+    height: 2rem;
+    margin-top: 0.5rem;
+    right: 2rem;
+    margin-right: 1rem;
+    font-size: 12pt;
+    text-align: center;
+    border-radius: 0.2rem;
+    border-style: initial;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    box-sizing: border-box;
+}
+
+.collapsible-value #fullName {
+    border-style: none;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.modifyElement{
+    display: inline-block;
+    width: 95%;
+    height: 2rem;
+}
+
+.modifyElement .editButton {
+    background: #FF9900;
+    border: 1px solid #783F04;
+    border-radius: 1000px;
+    color: #ffffff;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    padding: 0.25rem;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.modifyElement .editButton:hover {
+    background: #FEBD53;
+
+}
+
+.modifyElement .editButton:active {
+    position: relative;
+    top: 1px;
+
+}
+
+.deleteButton {
+    background: #ff2529;
+    border: 1px solid #783F04;
+    border-radius: 1000px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    font-weight: bold;
+    padding: 0.25rem;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background: #e43538;
+
+}
+
+.deleteButton:active {
+    position: absolute;
+    bottom: 1.9%;
+
+}
+
+.addElement {
+    display: table;
+    width: 95%;
+    height: 2rem;
+    padding: 1rem;
+    padding-left: 0;
+    padding-right: 4rem;
+}
+
+.addElement .textButton {
+    font-size: 1rem;
+    display: table-cell;
+    padding: 0.5rem;
+    margin: 0rem;
+}
+
+.addElement .addButton {
+    background-color:#44c767;
+    border-radius:28px;
+    border:1px solid #18ab29;
+    display: table-cell;
+    text-align: center;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:24px;
+    padding:7px 12px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+}
+.addElement .addButton:hover {
+    background-color:#5cbf2a;
+}
+.addElement .addButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+/* DROPDOWN */
+
+.dropdown {
+  width: 80%;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 2px rgb(204, 204, 204);
+  transition: all .1s ease;
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+  color: #474747;
+  height: 2.5rem;
+  text-align: left;
+  margin: 1rem;
+}
+.dropdown .select {
+    cursor: pointer;
+    display: block;
+    padding: 10px
+}
+.dropdown .select > i {
+    font-size: 13px;
+    color: #888;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    float: right;
+    line-height: 20px
+}
+.dropdown:hover {
+    box-shadow: 0 0 20px rgb(204, 204, 204)
+}
+.dropdown:active {
+    background-color: #f8f8f8
+}
+.dropdown.active:hover,
+.dropdown.active {
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+    border-radius: 5px 5px 0 0;
+    background-color: #f8f8f8
+}
+.dropdown.active .select > i {
+    transform: rotate(-90deg)
+}
+.dropdown .dropdown-menu {
+    position: absolute;
+    background-color: rgba(255,255,255, 0.95);
+    width: 100%;
+    left: 0;
+    margin-top: 1px;
+    box-shadow: 0 1px 2px rgb(204, 204, 204);
+    border-radius: 0 1px 5px 5px;
+    overflow: hidden;
+    display: none;
+    max-height: 160px;
+    overflow-y: auto;
+    z-index: 1;
+}
+.dropdown .dropdown-menu li {
+    padding: 10px;
+    transition: all .2s ease-in-out;
+    cursor: pointer
+} 
+.dropdown .dropdown-menu {
+    padding: 0;
+    list-style: none
+}
+.dropdown .dropdown-menu li:hover {
+    background-color: #f2f2f2
+}
+.dropdown .dropdown-menu li:active {
+    background-color: #e2e2e2
+}

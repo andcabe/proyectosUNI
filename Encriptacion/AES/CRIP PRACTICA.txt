@@ -1,0 +1,70 @@
+﻿										  F2[x]			
+F16 = {0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f} = x^4 + x + 1
+	0=0000
+	1=0001
+	2=0010
+	3=0011
+	...
+	f=1111
+
+K = 16 elementos de F16 (K0, K1, ..., K15)
+Texto en claro (Elementos de F16)
+
+Cifrar con clave (Bloques de 16)
+Descifrar con clave (Bloques de 16)
+
+Ultimo bloque añadir letras hasta completar 16.
+Añadir una última letra con el número de letras a coger del último bloque.
+
+Programa:
+	Primero comprobar si la clave es válida -> cifrar ... Comprobar -> Descifrar
+
+	1 -> Sustitucion Hex - Hex (Sustitución afin, Elementos a partir de los 5 primeros elementos de la clave (K0...K4); 4 en la matriz, 1 sumar)
+
+					k03	k13	k23	k33  	a03		k43
+ 		H(alpha)=	k02	k12	k22	k32	 *	a02	+	k42
+					k01	k11	k21	k31		a01		k41
+					k00	k10	k20	k30		a00		k40	
+					
+					Colocar vector como en AES (al reves)
+
+	2 -> Permutacion de filas (=AES)
+	3 -> Cambio por columnas	x^4+1 (En F16)
+
+		a0	a4	a8	a12	
+		a1	a5	a9	a13			a0 a1 a2 a3 ->	P(x) = x^3 + k10*x^2 + k11*x + k12 (1 + k10 + k11 + k12 Distinto de 0)
+		a2	a6	a10	a14			
+		a3	a7	a11	a15			(a3*x^3 + a2*x^2 + a1^x + a0) (x^3 + k10*x^2 + k11*X + k12) + <x^4 +1>
+
+	4 -> Sumar la clave
+
+	Los 3 primeros pasos van a depender de la clave, y se van a hacer 2 veces:
+
+	5 -> Sustitucion Hex - Hex (Sustitución afin, Elementos a partir de los 5 segundos elementos de la clave (K5...K9); 4 en la matriz, 1 sumar)
+
+					k53	k63	k73	k83		b3		k93
+ 		H(alpha)=	k52	k62	k72	k82	*	b2	+	k92
+					k51	k61	k71	k81		b1		k91
+					k50	k60	k70	k80		b0		k90
+
+	6 -> Permutacion de filas (=AES)
+	7 -> Cambio por columnas
+
+			a0	a4	a8	a12	
+			a1	a5	a9	a13			a0 a1 a2 a3 ->	P(x) = x^3 + k13*x^2 + k14*x + k15 (1 + k13 + k14 + k15 Distinto de 0)
+			a2	a6	a10	a14			
+			a3	a7	a11	a15			(a3*x^3 + a2*x^2 + a1^x + a0) (x^3 + k13*x^2 + k14*X + k15) + <x^4 +1>
+
+			
+			
+##Clave ejemplo:
+	1378ab621f012012
+	
+	['1010', '1011', '1001', '1000', '1101', '1100', '1110', '1111', '0010', '0011', '0001', '0000', '0101', '0100', '0110', '0111']
+	
+##Clave Ejemplo 2
+	
+	Clave:			94a55ae9b242a648
+	Texto:			0123456789abcdeffedcba9876543210
+	Encriptado:		47c061eda93ddf0afc7bda56128664b1
+	
